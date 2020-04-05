@@ -95,14 +95,9 @@ export default {
 </script>
 
 <style>
-.detail-cover{
+.detail-cover,.detail-cover img{
   width: 100%;
-  height: 280px;
-  text-align: center;
-}
-.detail-cover img{
-  width: auto;
-  height: 100%;
+  height: auto;
 }
 
 .watch-list{
