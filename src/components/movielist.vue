@@ -1,9 +1,10 @@
 <template>
 	<div class="wrapper" ref="wrapper">
 		<div class="content">
+
 			<ul>
 				<li v-for="item in list" :id="item.id">
-					<div class="hang" v-if="item.subject">
+					<div class="list-item" v-if="item.subject" @click="showDetail(item.subject)">
 						<div class="cover" v-if="item&&item.subject&&item.subject.images&&item.subject.images.small"><img :src="item.subject.images.small" /></div>
 						<div class="flex">
 							<a>{{item.subject.title}}<span v-if="item.subject.title!=item.subject.original_title"> / {{item.subject.original_title}}</span></a>
@@ -12,7 +13,7 @@
 							<div>{{item.year}}<span v-for="genre in item.subject.genres"> {{genre}}</span></div>
 						</div>
 					</div>
-					<div class="hang" v-if="!item.subject">
+					<div class="list-item" v-if="!item.subject" @click="showDetail(item)">
 						<div class="cover" v-if="item&&item.images&&item.images.small"><img :src="item.images.small" /></div>
 						<div class="flex">
 							<a>{{item.title}}<span v-if="item.title!=item.original_title"> / {{item.original_title}}</span></a>
@@ -23,6 +24,7 @@
 					</div>
 				</li>
 			</ul>
+
 		</div>
 	</div>
 </template>
@@ -116,30 +118,22 @@ export default {
 					})
 				}
 			})
-		}
+		},
+    showDetail:function(item){
+      this.$emit('showDetail',item.id);
+    }
 	}
 }
 </script>
 
 <style>
-	.wrapper{
-		flex:1;
-		flex-direction: column;
-		position: relative;
-		overflow: hidden;
-	}
-	.hang{
+  .list-item{
 		width: 100%;
 		height: auto;
 		display: flex;
 	}
-	.cover,.cover img{
+	.list-item .cover,.list-item .cover img{
 		width: 100px;
 		height: auto;
-	}
-	ul,li{
-		list-style: none;
-		margin: 0;
-		padding: 0;
 	}
 </style>

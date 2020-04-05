@@ -33,6 +33,8 @@ vue项目打包,命令行跳转到项目文件夹里打包项目，打包后的d
   npm install jquery
 用npm安装better-scroll
   npm install better-scroll --save
+  
+ 
 
 
 为了解决打包后dist文件夹的index.html空白页的问题，在config文件夹的index.js中修改，参考[关于vue-cli打包后，index显示空白页解决方法](https://blog.csdn.net/jasons_xie/article/details/80901589)
