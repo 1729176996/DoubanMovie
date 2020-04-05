@@ -37,5 +37,6 @@ vue项目打包,命令行跳转到项目文件夹里打包项目，打包后的d
 
 为了解决打包后dist文件夹的index.html空白页的问题，在config文件夹的index.js中修改，参考[关于vue-cli打包后，index显示空白页解决方法](https://blog.csdn.net/jasons_xie/article/details/80901589)
 
+如果打包后的文件不能上传Github，把.gitignore文件中的 /dist/删掉，然后重新打包上传就可以了，参考[Vue项目dist文件夹不能上传至github问题](https://www.jianshu.com/p/7b841e9d0f13?utm_source=desktop&utm_medium=timeline)
 
 提交Github后可以根据[GitHub Pages](https://1729176996.github.io/DoubanMovie/dist/index.html)来查看效果
