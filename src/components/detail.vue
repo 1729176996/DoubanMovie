@@ -21,10 +21,10 @@
       <div class="mt1">片长: <span v-for="duration,index in detailObj.durations"><a v-if="index!=0"> / </a>{{duration}}</span></div>
       <div class="mt1">又名: <span v-for="ak,index in detailObj.aka"><a v-if="index!=0"> / </a>{{ak}}</span></div>
       <div class="mt1 watch-list" v-if="detailObj.videos&&detailObj.videos.length>0">
-      	<div class="list-item">观看:</div>
-      	<div class="list-item" v-for="video in detailObj.videos">
-      		<div class="flex" style="padding-left: 1em;"><a @click="view(video.sample_link)">{{video.source.name}}</a></div>
-      		<div>{{video.need_pay?'VIP免费观看':'免费观看'}}</div>
+      	<div class="list-item" style="color: darkorange;">观看:</div>
+      	<div class="list-item" v-for="video in detailObj.videos" @click="view(video.sample_link)">
+      		<div style="padding-left: 4em;flex: 1;color:chartreuse;">{{video.source.name}}</div>
+      		<div style="padding-right: 1em;">{{video.need_pay?'VIP免费观看':'免费观看'}}</div>
       	</div>
       </div>
 
@@ -86,7 +86,10 @@ export default {
 					})
 				}
 			})
-		}
+		},
+    view:function(href){
+      window.open(href,"_blank");
+    }
 	}
 }
 </script>
@@ -110,5 +113,6 @@ export default {
   height: 40px;
   display: flex;
   line-height: 40px;
+  border: 1px #e1e1e2 solid;
 }
 </style>
