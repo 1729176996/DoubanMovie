@@ -1,7 +1,6 @@
 <template>
 	<div class="wrapper" ref="wrapper">
 		<div class="content">
-			<meta name="referrer" content="never">
 			<ul>
 				<li v-for="item in list" :id="item.id">
 					<div class="hang" v-if="item.subject">
