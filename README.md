@@ -1,5 +1,7 @@
 # DoubanMovie
 
+此版本为vue组件版
+
 创建vue项目的步骤
 
 		安装node.js
@@ -33,8 +35,12 @@ vue项目打包,命令行跳转到项目文件夹里打包项目，打包后的d
   npm install jquery
 用npm安装better-scroll
   npm install better-scroll --save
-  
- 
+
+安装vue-awesome
+  npm install less less-loader css-loader style-loader file-loader font-awesome --save
+在main.js里导入
+  import 'font-awesome/css/font-awesome.min.css'
+vue中font-awesome的使用方法参考[VUE.之安装 font-awesome](https://www.cnblogs.com/Charles-Yuan/p/11273347.html)
 
 
 为了解决打包后dist文件夹的index.html空白页的问题，在config文件夹的index.js中修改，参考[关于vue-cli打包后，index显示空白页解决方法](https://blog.csdn.net/jasons_xie/article/details/80901589)

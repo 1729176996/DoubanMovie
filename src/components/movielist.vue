@@ -120,7 +120,7 @@ export default {
 			})
 		},
     showDetail:function(item){
-      this.$emit('showDetail',item.id);
+      this.$emit('showDetail',item.id,item.title);
     }
 	}
 }

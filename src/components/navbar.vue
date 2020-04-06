@@ -23,10 +23,13 @@
 				]
 			}
 		},
+    mounted(){
+      this.clickNav(this.navList[0]);
+    },
 		methods:{
 			clickNav:function(nav){
 				//this.clicked = nav.code;
-				this.$emit('getClicked',nav.code);
+				this.$emit('getClicked',nav.code,nav.name);
 			}
 		}
 	}

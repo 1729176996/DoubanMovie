@@ -3,10 +3,17 @@
 		<!--
 		<HelloWorld msg="Welcome to Your Vue.js App" v-if="flag2===1"/>
 		-->
+    <div class="top-nav">
+      <div class="left-btn">
+        <div v-show="showDetailFlag" @click="closeDetail"><i class="fa fa-chevron-left" aria-hidden="true"></i>返回列表</div>
+      </div>
+      <div class="title">{{title}}</div>
+      <div class="right-btn">说明</div>
+    </div>
 		<movielist v-show="!showDetailFlag" ref="movielist" @showDetail="showDetailFromMovielist"/>
-    <div class="detail-nav" v-show="showDetailFlag" @click="closeDetail">返回列表</div>
     <detail v-show="showDetailFlag" ref="detail"/>
 		<navbar :clicked="clicked" @getClicked="getClickedFromNavbar"/>
+    <router-view/>
 	</div>
 </template>
 
@@ -26,25 +33,30 @@ export default {
   data:function(){
 	  return {
 		  clicked:'',
+      title:'',
+      old_title:'',
       showDetailFlag:false
 	  }
   },
   mounted(){
-	this.clicked = 'top250';
-  	this.$refs.movielist.init(this.clicked);
+
   },
   methods:{
-	  getClickedFromNavbar:function(clicked){
+	  getClickedFromNavbar:function(clicked,clickedName){
 		  this.clicked = clicked;
+      this.title = clickedName;
       this.showDetailFlag = false;
 		  this.$refs.movielist.init(this.clicked);
 	  },
-    showDetailFromMovielist:function(movieid){
+    showDetailFromMovielist:function(movieid,moviename){
       this.showDetailFlag = true;
+      this.old_title = this.title;
+      this.title = moviename;
       this.$refs.detail.init(movieid);
     },
     closeDetail:function(){
       this.showDetailFlag = false;
+      this.title = this.old_title;
     }
   }
 }
@@ -86,14 +98,26 @@ ul,li{
   margin-top: 0.5em;
 }
 
-.detail-nav{
-	background-color: #FFFFFF;
-	border: 1px #DDDDDD solid;
+/**
+ * 顶部的导航栏
+ */
+.top-nav{
+  background-color: #FFFFFF;
+  border: 1px #DDDDDD solid;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  padding-left: 0.5em;
+  width: 100%;
+  display: flex;
 }
-.detail-nav::before{
-  content: "< ";
+.top-nav .left-btn{
+  margin-left: 0.5em;
+  width: 5em;
+}
+.top-nav .title{
+  flex: 1;
+  text-align: center;
+}
+.top-nav .right-btn{
+  margin-right: 0.5em;
 }
 </style>
